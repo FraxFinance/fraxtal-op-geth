@@ -209,6 +209,7 @@ func (miner *Miner) generateWork(ctx context.Context, genParam *generateParams, 
 	}
 
 	misc.EnsureCreate2Deployer(miner.chainConfig, work.header.Time, work.state)
+	misc.EnsureFrxUSD(miner.chainConfig, work.header.Time, work.state)
 
 	for _, tx := range genParam.txs {
 		from, _ := types.Sender(work.signer, tx)
